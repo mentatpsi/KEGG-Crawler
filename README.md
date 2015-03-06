@@ -6,9 +6,9 @@ KEEG Crawler is a Python script that uses KEEGs REST API to first attain a list 
 
 It is divided into 3 different files:
 
-mainCrawler.py is responsible for the crawls.
+mainCrawler.py is responsible for the crawls. It utilzes the rest of the scripts to perform the crawl.
 
-dbReader.py utilizes pattern recognition to create an object inheriting a dictionary of deeper information. This is useful for later applications as some information might prove helpful.
+dbReader.py utilizes pattern recognition to create an object inheriting a dictionary type containing more deeper information. This is useful for later applications as some information might prove helpful.
 
 mapArea.py utilizes html parsing of the maparea section of the pathway maps. It was used for producing the secondary csv called pathway_connection.csv, explained later. 
 
