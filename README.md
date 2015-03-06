@@ -2,7 +2,7 @@ KEEG Crawler
 ====
 Author: Shay Maor
 
-KEEG Crawler is a Python script that uses KEEGs REST API to first attain a list of pathways, as well as their respective chemical reactions and metabolites. It utilizes its multithreading library to make the crawler process parallel, minimizing bandwidth latency issues. It utilizes 8 threads with stacks on each thread of the target crawls. It also utilizes the urllib2 library to utilize the crawls. It has a progress indicator and presents a message when each thread makes 50% progress. The script itself runs for approximately 20-30 minutes on a cable connection.
+KEEG Crawler is a Python script that uses KEEGs REST API to first attain a list of pathways, as well as their respective chemical reactions and metabolites. It utilizes its multithreading library to make the crawler process parallel, minimizing bandwidth latency issues. It utilizes 8 threads with stacks on each thread of the target crawls. It also utilizes the urllib2 library to utilize the crawls. It has a progress indicator and presents a message when each thread makes 50% progress and when it reaches completion. The script itself runs for approximately 20-30 minutes on a cable connection.
 
 It is divided into 3 different files:
 
