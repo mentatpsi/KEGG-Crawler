@@ -6,7 +6,7 @@ KEEG Crawler is a Python script that uses KEEGs REST API to first attain a list 
 
 It is divided into 3 different files:
 
-mainCrawler.py is responsible for the crawls. It utilzes the rest of the scripts to perform the crawl.
+crawler.py is responsible for the crawls. It utilzes the rest of the scripts to perform the crawl.
 
 dbReader.py utilizes pattern recognition to create an object inheriting a dictionary type containing more deeper information. This is useful for later applications as some information might prove helpful.
 
