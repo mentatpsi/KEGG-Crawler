@@ -1,4 +1,4 @@
-KEEG Crawler
+KEGG Crawler
 ====
 Author: Shay Maor
 
