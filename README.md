@@ -10,12 +10,12 @@ It is divided into 3 different files:
 
 crawler.py is responsible for the crawls. It utilizes the rest of the scripts to perform the crawl.
 
-dbReader.py utilizes pattern recognition to create an object inheriting a dictionary type containing more deeper information. This is useful for later applications as some information might prove helpful.
+dbReader.py utilizes pattern recognition to create an object inheriting a dictionary type containing deeper information. This is useful for later applications as some information might prove helpful for future endeavors. In the case of metabolites, this includes entries such as formula, molecular weight, reactions involved in, metabolic pathways, enzymes involved, as well as some information on external database fields (such as ChEBI and PubChem identifiers). The instance can then be called such as dbInstance['DBLINKS'] or dbInstance['ENZYME']
 
 mapArea.py utilizes html parsing of the maparea section of the pathway maps. It was used for producing the secondary csv called pathway_connection.csv, explained later. It is the only script which uses HTMLParser, since it examines the <maparea> tags within the html source found in pathways to look for metabolite nodes.
 
 
-It generates 5 csv's as well as python pickle files (dictionaries that can be imported). A later release will contain the python scripts that show proper usage of the pickle files. One of the Pickle files (compoundsD, a more complete ) contains
+It generates 5 csv's as well as python pickle files (dictionaries that can be imported). A later release will contain the python scripts that show proper usage of the pickle files. One of the Pickle files (compoundsD, a more complete collection of data on each metabolite) usually contains approximately 70 MB.
 
 A prompt will take place after maparea threads have completed. This is to avoid the heavier, more lengthy crawl from taking place in case testing functions were provided prior.
 
