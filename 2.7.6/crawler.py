@@ -36,7 +36,8 @@ def dictionWorker(queue, j):
     last = -1
     for qItem in queue:
         perc = ((s*100)/qLen)
-        if (perc % 50) == 0:
+        
+        if (perc % 25) == 0:
             if (last != perc):
                 last = perc
                 print "KEGG Crawler Thread %i at %i percent\n" % (j, perc)
@@ -344,23 +345,32 @@ if __name__ == "__main__":
     cores = 8
     
     pwcQueue = [[]*cores for item in range(cores)]
-    pwcThreads = []
-    i = 0
-    for pathway in sorted(pathways.keys()):
-        #prURL = rnURLsD[pathway]
-        pwcQueue[i%cores].append(pathway)
-        i += 1
-    j = 0
-    for queue in pwcQueue:
-        t = threading.Thread(target=mapAreaWorker, args=(queue,j))
-        pwcThreads.append(t)
-        j+=1
 
-    for thread in pwcThreads:
-        thread.start()
+    answ = raw_input("Run Map Area Workers? ")
 
-    for thread in pwcThreads:
-        thread.join()
+    if answ == "Y" or answ == "y":
+        mapAreaPrompt = True
+    else:
+        mapAreaPrompt = False
+
+    if mapAreaPrompt:
+        pwcThreads = []
+        i = 0
+        for pathway in sorted(pathways.keys()):
+            #prURL = rnURLsD[pathway]
+            pwcQueue[i%cores].append(pathway)
+            i += 1
+        j = 0
+        for queue in pwcQueue:
+            t = threading.Thread(target=mapAreaWorker, args=(queue,j))
+            pwcThreads.append(t)
+            j+=1
+
+        for thread in pwcThreads:
+            thread.start()
+
+        for thread in pwcThreads:
+            thread.join()
         
     
     #for pathway in sorted(pathways.keys()):
@@ -494,11 +504,13 @@ if __name__ == "__main__":
         CG.close()
 
 
-        pwCSV = makePWCSV(pathwayConnection)
 
-        PW = open("pathway_connection.csv","w")
-        PW.write(pwCSV)
-        PW.close()
+        if mapAreaPrompt:
+            pwCSV = makePWCSV(pathwayConnection)
+
+            PW = open("pathway_connection.csv","w")
+            PW.write(pwCSV)
+            PW.close()
         
         
         
