@@ -171,13 +171,23 @@ def makeRCSV(rDictionary):
             curName = string.join(rDictionary[reaction]["NAME"],"|")
         else:
             curName = ""
-                       
-        reactantsStr = string.join(rDictionary[reaction]["REACTANTS"],"|")
-        productsStr = string.join(rDictionary[reaction]["PRODUCTS"],"|")
 
-        metabolites = rDictionary[reaction]["REACTANTS"] + rDictionary[reaction]["PRODUCTS"]
+
+        reactantsStr = ""
+        productsStr = ""
+        metabolites = []
+        
+        if rDictionary[reaction].has_key("REACTANTS"):  
+            reactantsStr = string.join(rDictionary[reaction]["REACTANTS"],"|")
+            metabolites = rDictionary[reaction]["REACTANTS"] + rDictionary[reaction]["PRODUCTS"]
+            
+        if rDictionary[reaction].has_key("PRODUCTS"):
+            productsStr = string.join(rDictionary[reaction]["PRODUCTS"],"|")
+
+        
         rDictionary[reaction]["METABOLITES"] = metabolites
         reactionsD[reaction]["METABOLITES"] = metabolites
+        
 
         for metabolite in metabolites:
             #print metabolite
@@ -242,7 +252,10 @@ def makeRPCSV(prnDictionary):
         for keggR in keggRL:
             #reactionsD[keggR]
             reactionsOcc[keggR]+=1
-            reactionsD[keggR]["OCC"]+=1
+            if reactionsD[keggR].has_key("OCC"):
+                reactionsD[keggR]["OCC"]+=1
+            else:
+                reactionsD[keggR]["OCC"] = 1
             curStr += '"%i","%s","%s"\n' % (i,pathway[5:],keggR[3:])        
             j += 1
         i+=1
@@ -262,9 +275,9 @@ def makePCSV(dictionary):
 def makeCGCSV(dictionary):
     curStr = '"KEGG ID","Names","chEBI","Occurence"\n'
     idenMod = lambda current: current[current.find(":")+1:]
+    prefix = lambda metabolite: "gl:" if metabolite[0] == "G" else "cpd:" 
     for key in sorted(dictionary.keys()):
         metabolite = key
-        prefix = lambda metabolite: "gl:" if metabolite[0] == "G" else "cpd:" 
         metaName = prefix(metabolite) + metabolite
         if "chEBI" in compoundsD[key].keys():
             chEBI = compoundsD[key]["chEBI"]
