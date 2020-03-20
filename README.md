@@ -2,7 +2,7 @@ KEGG Crawler
 ====
 Author: Shay Maor
 
-KEGG Crawler is a Python script that uses KEGGs REST API to first attain a list of pathways, as well as their respective chemical reactions and metabolites. It utilizes its threading module to make the crawler process parallel, minimizing bandwidth latency issues. It utilizes 8 threads with stacks on each thread of the target crawls. It also utilizes the urllib2 module to initiate the crawls. The last module it uses is HTMLParser which comes from the Beautiful Soup library. This requires a pip install of beautiful soup (after pip is installed, this can be done through the cmd "pip install beautifulsoup"). 
+KEGG Crawler is a collection of Python scripts that uses KEGGs REST API to first attain a list of pathways, as well as their respective chemical reactions and metabolites. It utilizes Python's threading module to make the crawler process parallel, minimizing bandwidth & latency issues. It utilizes 8 threads with stacks on each thread of the target crawls. It also utilizes the urllib2 module to initiate the crawls.  The last module it uses is HTMLParser which comes from the Beautiful Soup library. This requires a pip install of beautiful soup (after pip is installed, this can be done through the cmd "pip install beautifulsoup"). 
 
 The main crawler has a progress indicator and presents a message when each thread makes 50% progress and when it reaches completion. The script itself runs for approximately 20-30 minutes on a cable connection.
 
