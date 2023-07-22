@@ -2,7 +2,7 @@ KEGG Crawler
 ====
 Author: Shay Maor
 
-KEGG Crawler is a collection of Python scripts that are designed to download huge portions of the KEGG database for local use into a format that helps with Data Processing such as Python. There are various tools that download portions of the database, but this tool was designed to gather a lot more data. A sample of the last crawl is featured in the repo. Primarily, there are reactions and metabolites. These come in the form of CSVs and Pickle files (to be imported as dictionaries). 
+KEGG Crawler is a collection of Python scripts that are designed to download huge portions of the KEGG database for local use into a format that helps with Data Processing such as Python. There are various tools that download portions of the database, but this tool was designed to gather a lot more data. A sample of the last crawl is featured in the repo. Primarily, there are pathways, reactions, and metabolites. These come in the form of CSVs and Pickle files (to be imported as dictionaries). 
 
 It uses KEGGs REST API to first attain a list of pathways, as well as their respective chemical reactions and metabolites. It utilizes Python's threading module to make the crawler process parallel, minimizing bandwidth & latency issues. It utilizes 8 threads with stacks on each thread of the target crawls. It also utilizes the urllib2 module to initiate the crawls.  The last module it uses comes from the Beautiful Soup library. This requires a pip install of beautiful soup (after pip is installed, this can be done through the cmd "pip install beautifulsoup"). 
 
